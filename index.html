@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="Car Hunter AI — демонстраційна версія персонального сервісу моніторингу вживаних авто з AI-оцінкою.">
+  <title>Car Hunter AI — Demo</title>
+  <style>
+    :root{--bg:#f4f6f8;--panel:#fff;--text:#17202a;--muted:#64748b;--border:#dbe2ea;--accent:#0f5bd7;--good:#147a3f;--bad:#b42318;--shadow:0 8px 28px rgba(15,23,42,.08)}
+    *{box-sizing:border-box} body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;color:var(--text);background:linear-gradient(180deg,#edf3fb 0,#f7f8fa 260px,var(--bg) 100%)} a{color:var(--accent)}
+    .wrap{max-width:1180px;margin:auto;padding:28px 20px 56px}.hero{background:linear-gradient(135deg,#0b1d3a,#133f7c);color:#fff;border-radius:22px;padding:28px;box-shadow:var(--shadow)}
+    .hero-top{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;flex-wrap:wrap}.eyebrow{font-size:13px;letter-spacing:.12em;text-transform:uppercase;opacity:.72}h1{margin:8px 0 10px;font-size:clamp(34px,6vw,62px);line-height:.98}.lead{max-width:760px;font-size:18px;line-height:1.55;opacity:.9}.demo-badge{background:#fff;color:#0b1d3a;border-radius:999px;padding:9px 14px;font-weight:700;white-space:nowrap}
+    .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:22px}.stat{padding:15px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:14px}.stat b{display:block;font-size:25px}.stat span{font-size:13px;opacity:.78}
+    .section{margin-top:26px}.section-head{display:flex;justify-content:space-between;gap:12px;align-items:end;margin-bottom:12px;flex-wrap:wrap}h2{margin:0;font-size:25px}.muted{color:var(--muted)}
+    .panel{background:var(--panel);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);padding:18px}.controls{display:flex;gap:10px;flex-wrap:wrap}input,select{border:1px solid var(--border);border-radius:10px;background:#fff;padding:10px 12px;min-height:42px;font:inherit}button{border:0;border-radius:10px;padding:10px 14px;background:var(--accent);color:#fff;font-weight:700;cursor:pointer}button.secondary{background:#e8eef8;color:#123}
+    .schedule{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.source{border:1px solid var(--border);border-radius:14px;padding:15px;background:#fbfcfe}.source h3{margin:0 0 10px}.source dl{display:grid;grid-template-columns:1fr auto;gap:8px 12px;margin:0}.source dt{color:var(--muted)}.source dd{margin:0;font-weight:700}
+    .cards{display:grid;gap:14px}.card{background:#fff;border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);padding:18px}.card-top{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}.title{font-size:21px;font-weight:800}.score{min-width:104px;text-align:center;border-radius:13px;padding:10px;font-size:22px;font-weight:900;background:#eef4ff;color:#0a4cb4}.meta{color:var(--muted);margin-top:5px;line-height:1.55}.lane{display:inline-block;margin-left:7px;padding:3px 8px;border-radius:999px;font-size:12px;background:#edf2f7;color:#334155;vertical-align:middle}
+    .cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:14px}.label{font-weight:800;margin-bottom:5px}.good{color:var(--good)}.risk{color:var(--bad)}.action{margin-top:14px;padding:11px 13px;background:#f8fafc;border-left:4px solid var(--accent);border-radius:8px}
+    .flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}.step{padding:14px;border-radius:13px;background:#fff;border:1px solid var(--border);text-align:center;font-weight:800}.notice{margin-top:16px;padding:14px;border-radius:12px;background:#fff8e6;border:1px solid #f2d58a;color:#6c4d00}footer{margin-top:34px;padding:20px 0 0;color:var(--muted);font-size:14px;line-height:1.6}
+    @media(max-width:850px){.stats,.schedule,.flow{grid-template-columns:1fr 1fr}.cols{grid-template-columns:1fr}}@media(max-width:540px){.stats,.schedule,.flow{grid-template-columns:1fr}.card-top{flex-direction:column}.score{width:100%}}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="hero-top">
+      <div><div class="eyebrow">Public demonstration</div><h1>Car Hunter AI</h1><div class="lead">Персональний сервіс моніторингу вживаних автомобілів: збір оголошень, базова фільтрація, дедуплікація, AI-оцінка, виявлення критичних ризиків і Telegram-сповіщення.</div></div>
+      <div class="demo-badge">DEMO · тестові дані</div>
+    </div>
+    <div class="stats"><div class="stat"><b>3</b><span>цільові джерела</span></div><div class="stat"><b>6.0+</b><span>показ на сайті</span></div><div class="stat"><b>6.7+</b><span>Telegram</span></div><div class="stat"><b>7.2+</b><span>Telegram 🔥</span></div></div>
+  </header>
+
+  <section class="section"><div class="section-head"><div><h2>Логіка роботи</h2><div class="muted">Демонстрація архітектури майбутнього сервісу</div></div></div><div class="flow"><div class="step">AUTO.RIA / OLX / RST</div><div class="step">Базові фільтри</div><div class="step">Дедуплікація</div><div class="step">AI-оцінка</div><div class="step">Сайт + Telegram</div></div></section>
+
+  <section class="section"><div class="section-head"><div><h2>Гнучкий розклад</h2><div class="muted">Для кожного джерела — окрема денна і нічна частота</div></div></div><div class="schedule"><div class="source"><h3>AUTO.RIA</h3><dl><dt>Вдень</dt><dd>30 хв</dd><dt>Вночі</dt><dd>8 год</dd></dl></div><div class="source"><h3>OLX</h3><dl><dt>Вдень</dt><dd>1 год</dd><dt>Вночі</dt><dd>8 год</dd></dl></div><div class="source"><h3>RST</h3><dl><dt>Вдень</dt><dd>3 год</dd><dt>Вночі</dt><dd>12 год</dd></dl></div></div></section>
+
+  <section class="section">
+    <div class="section-head"><div><h2>Демонстраційні оголошення</h2><div class="muted">Усі автомобілі нижче вигадані й використовуються лише для демонстрації</div></div><div class="controls"><select id="laneFilter"><option value="all">Усі рівні</option><option value="site">Лише сайт 6.0–6.6</option><option value="tg">Telegram 6.7–7.1</option><option value="fire">Telegram 🔥 7.2+</option></select><input id="search" placeholder="Пошук за моделлю"><button class="secondary" onclick="resetFilters()">Скинути</button></div></div>
+    <div id="cards" class="cards"></div>
+  </section>
+
+  <section class="section"><div class="panel"><h2>Принцип оцінювання</h2><p>Система не відсікає автомобіль автоматично лише через великий пробіг, 4–5 власників, короткий опис або роботизовану коробку. Ці фактори враховуються лише в контексті ціни, історії, продавця, типу коробки, ДТП, юридичних ризиків і підтвердженого технічного стану.</p><div class="notice">Критичний відсів: серйозне невідремонтоване ДТП, порушена геометрія, стукіт двигуна, несправна коробка, авто після пожежі/затоплення, юридичні обтяження або явно завищена ціна без обґрунтування.</div></div></section>
+
+  <footer>Це незалежна демонстраційна версія персонального проєкту й не є офіційним продуктом RIA.com. У майбутньому для отримання даних планується використання <a href="https://auto.ria.com/uk/" target="_blank" rel="noopener">AUTO.RIA</a> через офіційний Developers.RIA API, а також окремих інтеграцій з OLX та RST. Жодні API-ключі або персональні дані в цій демо-версії не зберігаються.</footer>
+</div>
+<script>
+const cars=[
+{lane:'fire',score:7.7,marker:'🔥',title:'Citroën C5 2011 2.0 HDi Aisin',meta:'2011 · 6900$ · 224 000 км · Мукачево · дизель · гідроавтомат',plus:['Aisin/гідроавтомат','дизель відповідає пріоритету','продавець має 2 оголошення','готовність до СТО'],risks:['перевірити історію пробігу','уточнити ДТП і фарбування'],action:'Швидко запросити VIN, історію сервісу і домовитися про діагностику.'},
+{lane:'tg',score:6.9,marker:'',title:'Renault Scenic 2010 1.5 dCi EDC',meta:'2010 · 5900$ · 260 000 км · Луцьк · дизель · EDC',plus:['сильна ціна','приватний продавець','короткий опис не штрафується'],risks:['EDC потребує перевірки','мало даних — треба дзвонити'],action:'Не пропускати: запросити VIN, номер авто та історію обслуговування коробки.'},
+{lane:'fire',score:7.4,marker:'🔥',title:'Ford Focus 2013 2.0 AT',meta:'2013 · 6000$ · 132 000 км · Калуш · бензин · автомат',plus:['низький заявлений пробіг','автомат','власне авто','готовність до СТО'],risks:['перевірити валідність пробігу','уточнити характер косметичного ремонту'],action:'Запросити VIN та фото до ремонту; при чистій історії — сильний кандидат.'},
+{lane:'site',score:6.2,marker:'',title:'Peugeot 508 2016 1.6 HDi AT',meta:'2016 · 6500$ · 402 000 км · Львів · дизель · автомат',plus:['свіжий рік','ціна в бюджеті','модель у пріоритеті'],risks:['дуже великий пробіг','продавець має багато оголошень','потрібна перевірка історії'],action:'Залишити на сайті; не відсікати лише через пробіг, але перевірити продавця й сервіс.'}
+];
+function laneLabel(lane,score){if(score>=8)return'TG 🔥🔥';if(lane==='fire')return'TG 🔥';if(lane==='tg')return'TG';return'site only'}
+function render(){const lane=document.getElementById('laneFilter').value;const q=document.getElementById('search').value.trim().toLowerCase();const filtered=cars.filter(c=>(lane==='all'||c.lane===lane)&&(!q||c.title.toLowerCase().includes(q)));document.getElementById('cards').innerHTML=filtered.map(c=>`<article class="card"><div class="card-top"><div><div class="title">${c.title} ${c.marker}<span class="lane">${laneLabel(c.lane,c.score)}</span></div><div class="meta">${c.meta}</div></div><div class="score">${c.score}/10</div></div><div class="cols"><div><div class="label good">Плюси</div>${c.plus.join('; ')}</div><div><div class="label risk">Ризики</div>${c.risks.join('; ')}</div></div><div class="action"><b>Рекомендована дія:</b> ${c.action}</div></article>`).join('')||'<div class="panel muted">Нічого не знайдено.</div>'}
+function resetFilters(){document.getElementById('laneFilter').value='all';document.getElementById('search').value='';render()}
+document.getElementById('laneFilter').addEventListener('change',render);document.getElementById('search').addEventListener('input',render);render();
+</script>
+</body>
+</html>
